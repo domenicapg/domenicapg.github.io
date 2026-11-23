@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Hermes Personal Backup</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+         max-width: 720px; margin: 3rem auto; padding: 0 1.25rem; line-height: 1.7; color: #1a1a1a; }
+  h1 { font-size: 1.5rem; }
+  code { background: #f2f2f2; padding: .1em .35em; border-radius: 4px; }
+  footer { margin-top: 3rem; font-size: .85rem; color: #666; }
+</style>
+</head>
+<body>
+<h1>Hermes Personal Backup</h1>
+
+<p>
+  This is a personal, single-user automation tool. It runs on its owner's own machine and
+  connects to the owner's own Google account to keep an encrypted backup of the owner's
+  Hermes assistant data in Google Drive.
+</p>
+
+<h2>What it does</h2>
+<ul>
+  <li>Creates a local, AES-256 encrypted archive of the owner's Hermes configuration and data.</li>
+  <li>Uploads that archive to a private Google Drive folder owned by the same account.</li>
+  <li>Optionally reads Gmail, Calendar, Contacts, Sheets, Docs and Tasks on behalf of the owner
+      so the assistant can draft messages and read the owner's own schedules and notes.</li>
+</ul>
+
+<p>
+  The tool is not distributed, has no other users, and does not operate a server that stores
+  Google user data. See the <a href="./privacy.html">Privacy Policy</a>.
+</p>
+
+<footer>
+  Contact: <a href="mailto:aag262404@gmail.com">aag262404@gmail.com</a> ·
+  Last updated: 2026-11-17
+</footer>
+</body>
+</html>
