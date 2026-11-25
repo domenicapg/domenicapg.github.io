@@ -2,72 +2,269 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Privacy Policy — Hermes Personal Backup</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Privacy Policy for Hermes Personal Backup — how the application accesses, uses, stores, encrypts and deletes the owner's Google data.">
+<meta name="robots" content="index,follow">
+<title>Privacy Policy — Hermes Personal Backup</title>
 <style>
-  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
-         max-width: 720px; margin: 3rem auto; padding: 0 1.25rem; line-height: 1.7; color: #1a1a1a; }
-  h1 { font-size: 1.5rem; } h2 { font-size: 1.1rem; margin-top: 2rem; }
-  footer { margin-top: 3rem; font-size: .85rem; color: #666; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+         max-width: 760px; margin: 3rem auto; padding: 0 1.25rem; line-height: 1.75; color: #1a1a1a; }
+  h1 { font-size: 1.5rem; margin-bottom: .25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; border-bottom: 1px solid #e3e3e3; padding-bottom: .3rem; }
+  h3 { font-size: 1.02rem; margin-top: 1.25rem; }
+  code { background: #f2f2f2; padding: .1em .35em; border-radius: 4px; font-size: .9em; }
+  ul { padding-left: 1.3rem; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: .95rem; }
+  th, td { border: 1px solid #ddd; padding: .5rem .6rem; text-align: left; vertical-align: top; }
+  th { background: #f4f6fa; }
+  .box { background: #f7f9fc; border: 1px solid #dde4ee; border-radius: 8px; padding: 1rem 1.25rem; }
+  footer { margin-top: 3rem; font-size: .85rem; color: #666; border-top: 1px solid #eee; padding-top: 1rem; }
 </style>
 </head>
 <body>
-<h1>Privacy Policy — Hermes Personal Backup</h1>
-<p><em>Last updated: 2026-11-17</em></p>
 
+<h1>Privacy Policy — Hermes Personal Backup</h1>
+<p><strong>Effective date: 2026-11-23</strong> · Last updated: 2026-11-23</p>
+
+<div class="box">
+  <strong>Summary in one paragraph.</strong>
+  Hermes Personal Backup is a private tool used by exactly one person. It makes an AES-256 encrypted
+  archive of that person's own assistant data on that person's own computer and uploads that encrypted
+  archive to a private folder in that same person's Google Drive. The data is never shared, never sold,
+  never used for advertising, never read by another person, and never stored on any server operated for
+  third parties. The only Google data the application can ever touch belongs to the single account that
+  authorised it.
+</div>
+
+<h2>1. Who we are</h2>
 <p>
-  Hermes Personal Backup ("the Tool") is a private, single-user automation script operated by its
-  owner for the owner's own Google account. The Tool is not offered to the public and has no
-  other users.
+  “Hermes Personal Backup” is not a company. It is a piece of automation software written and operated
+  by one private individual for their own use. The operator can be reached at
+  <a href="mailto:aag262404@gmail.com">aag262404@gmail.com</a>. Because there is only one user — the
+  operator themselves — there is no customer database, no analytics service, no advertising partner and
+  no data-processing agreement with any third party.
 </p>
 
-<h2>1. Google user data accessed</h2>
-<p>When the owner grants consent, the Tool may access the following data in the owner's own
-   Google account, limited to the scopes the owner approves:</p>
+<h2>2. What this application does</h2>
+<p>
+  The application backs up the local data of a personal assistant program called Hermes (configuration
+  files, scheduled-job definitions, conversation history and related state) so that the operator can
+  restore their assistant after a hardware failure. It also optionally allows that assistant — never
+  anyone else — to read or draft the operator's own Gmail messages, calendar events, contacts,
+  documents, spreadsheets and tasks, so the assistant can carry out requests such as “summarise the mail
+  that arrived today” or “put this on my calendar”.
+</p>
+
+<h2>3. Google data we access, and exactly why</h2>
+<p>
+  Access is granted through Google OAuth 2.0 with explicit consent. The following scopes are requested.
+  Each row states what is read or written and the specific purpose for which it is used.
+</p>
+<table>
+  <tr><th>Scope requested</th><th>What it permits</th><th>Purpose</th></tr>
+  <tr>
+    <td><code>drive</code></td>
+    <td>Create, read, update and delete files in the Drive of the authorising account.</td>
+    <td>To upload the encrypted backup archive into one specific private folder, list existing archives,
+        and delete archives that have aged out of the retention schedule.</td>
+  </tr>
+  <tr>
+    <td><code>gmail.readonly</code></td>
+    <td>Read mail and message metadata of the authorising account.</td>
+    <td>To answer the operator's own requests about their own inbox (search, summarise, triage).</td>
+  </tr>
+  <tr>
+    <td><code>gmail.send</code></td>
+    <td>Send mail as the authorising account.</td>
+    <td>To send a message only when the operator has explicitly asked the assistant to send it, and only
+        after the operator has seen and approved the content.</td>
+  </tr>
+  <tr>
+    <td><code>gmail.modify</code></td>
+    <td>Change labels on the account's own messages (e.g. mark read, add a label).</td>
+    <td>To apply triage actions the operator requested, such as marking a message read or labelling it.</td>
+  </tr>
+  <tr>
+    <td><code>calendar</code></td>
+    <td>Read and modify events of the authorising account.</td>
+    <td>To show and create the operator's own schedule entries when asked.</td>
+  </tr>
+  <tr>
+    <td><code>contacts.readonly</code></td>
+    <td>Read the contacts of the authorising account.</td>
+    <td>To resolve names to addresses for the operator's own requests (e.g. “mail my accountant”).</td>
+  </tr>
+  <tr>
+    <td><code>documents</code></td>
+    <td>Read and edit the authorising account's Google Docs.</td>
+    <td>To draft or edit documents the operator asked for.</td>
+  </tr>
+  <tr>
+    <td><code>spreadsheets</code></td>
+    <td>Read and edit the authorising account's Google Sheets.</td>
+    <td>To read or write spreadsheets the operator asked about.</td>
+  </tr>
+  <tr>
+    <td><code>tasks</code></td>
+    <td>Read and modify Google Tasks of the authorising account.</td>
+    <td>To maintain the operator's own to-do list when asked.</td>
+  </tr>
+</table>
+<p>
+  These are all of the scopes requested. No other data category — no precise location, no health data, no
+  payment information, no browsing history, no photographs uploaded through Google Photos — is accessed.
+  Access is limited to the content of the single Google account that granted consent; there is no domain-wide
+  delegation and no service account acting on behalf of other users.
+</p>
+
+<h2>4. How the data is stored, encrypted and protected</h2>
 <ul>
-  <li><strong>Gmail</strong> — read messages and create/send drafts on the owner's behalf.</li>
-  <li><strong>Google Drive</strong> — create and manage files in the Tool's own backup folder.</li>
-  <li><strong>Google Calendar</strong> — read and create events.</li>
-  <li><strong>Contacts</strong> — read the owner's contacts to resolve recipients.</li>
-  <li><strong>Google Sheets / Docs</strong> — read and write documents the owner opens with the Tool.</li>
-  <li><strong>Google Tasks</strong> — read and create tasks.</li>
+  <li><strong>Encryption before transfer.</strong> Each backup archive is compressed and encrypted with
+      AES-256 (via OpenSSL) on the local machine, using a passphrase held only by the operator. The
+      plaintext never leaves the machine and never reaches Google Drive in unencrypted form.</li>
+  <li><strong>Where it rests.</strong> The encrypted archive rests in one private Google Drive folder of
+      the authorising account. That folder is not shared with anyone and is not published on the web.</li>
+  <li><strong>Local secrets.</strong> The OAuth refresh token and the client secret are stored in files on
+      the operator's own machine, protected by filesystem permissions (mode 600, readable only by the
+      service account that runs the backup).</li>
+  <li><strong>No server-side copy.</strong> The application does not copy Google data to any external
+      server, object store, logging service or third-party API. Messages and documents read for the
+      operator are processed in memory for the duration of that request only.</li>
 </ul>
 
-<h2>2. How the data is used</h2>
-<p>Data is used solely to perform the actions the owner requests through their own assistant:
-   writing backups, drafting mail, reading the owner's schedule and notes, and recording tasks.
-   No advertising, profiling, or analytics is performed.</p>
+<h2>5. How long data is kept (retention)</h2>
+<ul>
+  <li><strong>Backup archives in Drive:</strong> kept on a rolling schedule of 7 daily and 4 weekly
+      copies. Older archives are deleted automatically, and each archive carries its own checksum files
+      so integrity can be verified.</li>
+  <li><strong>Credentials:</strong> the OAuth refresh token is retained only while it is needed to run
+      the scheduled backup, and can be revoked at any time (see section 8).</li>
+  <li><strong>Content read during an assistant request:</strong> not persisted. It is used to answer that
+      request and then discarded from memory.</li>
+</ul>
 
-<h2>3. Storage and transfer</h2>
+<h2>6. What we never do with the data</h2>
+<ul>
+  <li>We do not sell, rent, licence or trade any Google user data.</li>
+  <li>We do not share it with any third party, for any reason, other than Google itself as the storage
+      provider chosen by the operator.</li>
+  <li>We do not use it for advertising, marketing, profiling or automated decision-making.</li>
+  <li>We do not use Gmail content for advertising purposes in any form, including for training or
+      improving any model used by anyone else.</li>
+  <li>We do not permit any human other than the operator to read it.</li>
+  <li>We do not transfer it to any model provider unless the operator has explicitly asked for a task
+      that requires it, and even then only the minimum text necessary for that request.</li>
+  <li>We do not collect data about children. The tool is operated by one adult for their own data.</li>
+</ul>
+
+<h2>7. Google API Services User Data Policy</h2>
 <p>
-  OAuth credentials and the resulting data are stored only on the owner's own machine and in the
-  owner's own Google Drive account. Backups are encrypted with AES-256 before upload; the
-  encryption key never leaves the owner's machine. No Google user data is transmitted to, stored
-  on, or processed by any third-party server operated by the Tool's author.
+  The application's use and transfer of information received from Google APIs adheres to the
+  <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API
+  Services User Data Policy</a>, including the Limited Use requirements. In particular: we use the data
+  only to provide or improve the user-facing features described on this page; we do not transfer it to
+  others except as described here or as necessary to provide those features; and we do not use it for
+  advertising, including targeted advertising.
 </p>
 
-<h2>4. Sharing</h2>
-<p>Google user data is never sold, rented, or shared with third parties. It is not used for
-   training machine-learning models and is not used to determine creditworthiness or for lending.</p>
+<h2>8. Your choices and rights</h2>
+<ul>
+  <li><strong>Revoke access at any time.</strong> Visit
+      <a href="https://myaccount.google.com/permissions" rel="noopener">myaccount.google.com/permissions</a>
+      and remove “Hermes Personal Backup”. Revocation stops all further access immediately; the operator
+      can also simply delete the local token file.</li>
+  <li><strong>Delete stored archives.</strong> The operator can delete any or all encrypted archives in
+      the Drive folder at any time; deletion is immediate and permanent.</li>
+  <li><strong>Request deletion or ask a question.</strong> Email
+      <a href="mailto:aag262404@gmail.com">aag262404@gmail.com</a>. Because the only data subject is the
+      operator, a request is normally fulfilled by deleting the Drive folder contents and revoking the
+      grant.</li>
+  <li><strong>Lawful basis (GDPR/UK GDPR framing).</strong> Processing is based on the consent given at
+      the OAuth screen and on the legitimate interest of the data subject themselves (backing up their
+      own data). Consent can be withdrawn without affecting prior lawful processing.</li>
+</ul>
 
-<h2>5. Limited Use</h2>
+<h2>9. Security incidents</h2>
 <p>
-  The Tool's use of information received from Google APIs adheres to the
-  <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services
-  User Data Policy</a>, including the Limited Use requirements.
+  If the operator ever discovers that the token or an archive has leaked, the response is: revoke the
+  OAuth grant, rotate the archive passphrase, delete the affected archives from Drive, and re-authorise.
+  Notifications, where required, are handled between Google and the operator directly, since there are no
+  other affected users.
 </p>
 
-<h2>6. Retention and deletion</h2>
+<h2>10. Changes to this policy</h2>
 <p>
-  The owner may revoke access at any time at
-  <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>, and may
-  delete stored data by removing the local token file and the backup folder in Drive. Revoking
-  access immediately invalidates the Tool's credentials.
+  This policy may be updated if the scopes or behaviour of the application change. The “Last updated”
+  date at the top always reflects the current version. Material changes will additionally be reflected on
+  the <a href="./index.html">application home page</a>.
 </p>
 
-<h2>7. Contact</h2>
-<p>Questions: <a href="mailto:aag262404@gmail.com">aag262404@gmail.com</a></p>
+<h2>11. Contact</h2>
+<p>
+  Operator (single individual): <a href="mailto:aag262404@gmail.com">aag262404@gmail.com</a><br>
+  Application home page: <a href="./index.html">Hermes Personal Backup</a><br>
+  Terms of Service: <a href="./terms.html">terms.html</a>
+</p>
 
-<footer><a href="./index.html">← Home</a></footer>
+<hr>
+
+<h2>日本語版（要約と補足）</h2>
+
+<h3>1. 運営者</h3>
+<p>
+  「Hermes Personal Backup」は企業ではなく、個人が自分自身のために作成・運用している自動化ツールです。
+  利用者は運営者本人ただ1人です。連絡先: aag262404@gmail.com
+</p>
+
+<h3>2. 目的</h3>
+<p>
+  個人用アシスタント「Hermes」の設定・履歴・ジョブ定義をローカルで AES-256 暗号化し、同一 Google
+  アカウントの非公開ドライブフォルダへ保存することで、障害時に復元できるようにします。あわせて、本人の
+  Gmail・カレンダー・連絡先・ドキュメント・スプレッドシート・タスクを「本人の指示に従って」読み書きします。
+  他人のデータにアクセスすることはありません。
+</p>
+
+<h3>3. 取得するデータと利用目的</h3>
+<p>
+  依頼するスコープは drive / gmail.readonly / gmail.send / gmail.modify / calendar / contacts.readonly /
+  documents / spreadsheets / tasks の9つで、それぞれ上表の目的のみに使用します。位置情報・健康情報・
+  決済情報・閲覧履歴など他の情報は取得しません。アクセス対象は同意した1つの Google アカウントのみで、
+  ドメイン全体への委任や他ユーザー向けのサービスアカウントは使用しません。
+</p>
+
+<h3>4. 保存・暗号化</h3>
+<p>
+  バックアップはアップロード前にローカルで AES-256 暗号化され、平文が外に出ることはありません。保存先は
+  本人の非公開ドライブフォルダのみ。OAuth トークン等の秘密情報は所有者の端末上に権限 600 で保存します。
+  外部サーバー・第三者 API への複製やログ保存は行いません。
+</p>
+
+<h3>5. 保存期間</h3>
+<p>
+  ドライブ内のアーカイブは「日次7世代・週次4世代」のローテーションで自動削除します。リクエスト時に読み取った
+  メールや文書はメモリ上で処理するのみで永続保存しません。
+</p>
+
+<h3>6. 行わないこと</h3>
+<p>
+  売却・貸与・第三者提供、広告目的での利用、プロファイリング、他人による閲覧、不要なモデル提供者への送信は
+  一切行いません。Gmail の内容を広告目的で使用することもありません。
+</p>
+
+<h3>7. 準拠</h3>
+<p>Google API Services User Data Policy（Limited Use 要件を含む）に準拠します。</p>
+
+<h3>8. 取り消しと削除</h3>
+<p>
+  myaccount.google.com/permissions からいつでもアクセス権を取り消せます。ドライブ内のアーカイブはいつでも
+  自分で削除できます。削除や質問は aag262404@gmail.com まで。
+</p>
+
+<footer>
+  Hermes Personal Backup · Effective 2026-11-23 ·
+  <a href="./index.html">Home</a> · <a href="./terms.html">Terms</a><br>
+  Contact: <a href="mailto:aag262404@gmail.com">aag262404@gmail.com</a>
+</footer>
+
 </body>
 </html>
