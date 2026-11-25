@@ -1,42 +1,122 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Hermes Personal Backup</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Hermes Personal Backup — a private, single-user tool that creates encrypted local backups of the owner's Hermes assistant data and stores them in the owner's own Google Drive.">
+<meta name="robots" content="index,follow">
+<title>Hermes Personal Backup — Application Information</title>
 <style>
-  body { font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
-         max-width: 720px; margin: 3rem auto; padding: 0 1.25rem; line-height: 1.7; color: #1a1a1a; }
-  h1 { font-size: 1.5rem; }
-  code { background: #f2f2f2; padding: .1em .35em; border-radius: 4px; }
-  footer { margin-top: 3rem; font-size: .85rem; color: #666; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+         max-width: 760px; margin: 3rem auto; padding: 0 1.25rem; line-height: 1.75; color: #1a1a1a; }
+  h1 { font-size: 1.6rem; margin-bottom: .25rem; }
+  h2 { font-size: 1.2rem; margin-top: 2rem; border-bottom: 1px solid #e3e3e3; padding-bottom: .3rem; }
+  h3 { font-size: 1.05rem; margin-top: 1.25rem; }
+  code { background: #f2f2f2; padding: .1em .35em; border-radius: 4px; font-size: .9em; }
+  ul { padding-left: 1.3rem; }
+  .lead { font-size: 1.05rem; }
+  .box { background: #f7f9fc; border: 1px solid #dde4ee; border-radius: 8px; padding: 1rem 1.25rem; }
+  footer { margin-top: 3rem; font-size: .85rem; color: #666; border-top: 1px solid #eee; padding-top: 1rem; }
 </style>
 </head>
 <body>
-<h1>Hermes Personal Backup</h1>
 
-<p>
-  This is a personal, single-user automation tool. It runs on its owner's own machine and
-  connects to the owner's own Google account to keep an encrypted backup of the owner's
-  Hermes assistant data in Google Drive.
+<h1>Hermes Personal Backup</h1>
+<p class="lead">
+  The purpose of this application is simple: <strong>to keep an encrypted backup of the owner's own
+  Hermes assistant data in the owner's own Google Drive</strong>, automatically and without any other
+  person being involved.
 </p>
 
-<h2>What it does</h2>
+<div class="box">
+  <strong>This page is public information about the application.</strong>
+  No sign-in, account or login is required to read it. This site is not a login page and does not
+  contain any login form. It exists only to describe what the application does and how it handles data.
+</div>
+
+<h2>What this application is</h2>
+<p>
+  Hermes Personal Backup is a private automation tool that runs on a single computer owned and
+  operated by one individual. It is used only by that individual. It is not sold, not distributed as
+  a product or service, and it has no other users. It does not run a public server and it does not
+  store Google user data on any server.
+</p>
+
+<h2>Why it exists (purpose)</h2>
 <ul>
-  <li>Creates a local, AES-256 encrypted archive of the owner's Hermes configuration and data.</li>
-  <li>Uploads that archive to a private Google Drive folder owned by the same account.</li>
-  <li>Optionally reads Gmail, Calendar, Contacts, Sheets, Docs and Tasks on behalf of the owner
-      so the assistant can draft messages and read the owner's own schedules and notes.</li>
+  <li>The owner runs a personal assistant program called <em>Hermes</em> that stores configuration,
+      conversation history and scheduled-job data locally.</li>
+  <li>If that computer fails, that data would be lost.</li>
+  <li>This application therefore packs that data into an AES-256 encrypted archive every day and
+      uploads the encrypted archive to a <strong>private</strong> folder in the owner's own
+      Google Drive, so it can be restored later.</li>
 </ul>
 
+<h2>What it does, step by step</h2>
+<ol>
+  <li>Collects the owner's Hermes configuration and data files on the local machine.</li>
+  <li>Compresses them into a single archive and encrypts it locally with AES-256
+      (<code>openssl enc -aes-256-cbc</code>). Encryption happens <strong>before</strong> anything
+      leaves the machine.</li>
+  <li>Uploads only that encrypted archive to one private Google Drive folder that belongs to the
+      same Google account.</li>
+  <li>Deletes old archives on a rolling schedule (7 daily + 4 weekly copies are kept).</li>
+  <li>Optionally lets the assistant read and draft the owner's own Gmail messages, calendar events,
+      contacts and documents, purely so the assistant can answer the owner's own requests
+      (for example: "summarise today's mail"). No one else's data is ever accessed.</li>
+</ol>
+
+<h2>Data it touches</h2>
+<ul>
+  <li><strong>Google Drive</strong> — writes the encrypted backup archives into one private folder.</li>
+  <li><strong>Gmail</strong> — reads and drafts the owner's own mail when the owner asks the assistant to.</li>
+  <li><strong>Calendar / Contacts / Docs / Sheets / Tasks</strong> — reads or edits the owner's own
+      items only, when the owner asks.</li>
+</ul>
 <p>
-  The tool is not distributed, has no other users, and does not operate a server that stores
-  Google user data. See the <a href="./privacy.html">Privacy Policy</a>.
+  Full details, including retention, what is never done, and how to revoke access, are in the
+  <a href="./privacy.html">Privacy Policy</a> and the <a href="./terms.html">Terms of Service</a>.
+</p>
+
+<h2>Who operates it</h2>
+<p>
+  A single private individual. Contact:
+  <a href="mailto:aag262404@gmail.com">aag262404@gmail.com</a>
+</p>
+
+<h2>Is it available to the public?</h2>
+<p>
+  No. The OAuth client is used by exactly one person (the owner). Access to the application is not
+  offered to anyone else, there is no sign-up flow, and there is no multi-tenant service behind it.
+</p>
+
+<hr>
+
+<h2>日本語での説明</h2>
+<h3>このアプリの目的</h3>
+<p>
+  このアプリケーションの目的は、<strong>所有者本人の Hermes アシスタントのデータを、所有者本人の
+  Google ドライブに暗号化して自動バックアップすること</strong>です。利用者は所有者1人のみです。
+</p>
+<h3>動作の流れ</h3>
+<ul>
+  <li>所有者のコンピュータ上で、設定・履歴・スケジュールデータを1つにまとめます。</li>
+  <li>AES-256 でローカル暗号化します（暗号化はアップロード前に完了します）。</li>
+  <li>暗号化済みアーカイブのみを、同じ Google アカウントの非公開ドライブフォルダにアップロードします。</li>
+  <li>古いアーカイブはローテーションで削除します（日次7世代・週次4世代）。</li>
+</ul>
+<h3>このサイトについて</h3>
+<p>
+  このページはアプリケーションの説明のみを目的とした公開ページです。ログイン画面やログインフォームは
+  存在せず、ログインなしで閲覧できます。
 </p>
 
 <footer>
+  Hermes Personal Backup · <a href="./privacy.html">Privacy Policy</a> ·
+  <a href="./terms.html">Terms of Service</a><br>
   Contact: <a href="mailto:aag262404@gmail.com">aag262404@gmail.com</a> ·
-  Last updated: 2026-11-17
+  Last updated: 2026-11-23
 </footer>
+
 </body>
 </html>
