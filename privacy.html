@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -35,6 +34,51 @@
   third parties. The only Google data the application can ever touch belongs to the single account that
   authorised it.
 </div>
+
+<h2>0. How this application accesses, uses, stores and shares Google user data</h2>
+<p>
+  This section states, in the four categories Google requires, exactly what happens to Google user data.
+</p>
+<h3>Access</h3>
+<p>
+  Access is obtained only through Google OAuth 2.0 after the account holder explicitly grants consent on
+  the Google consent screen, and is limited to the nine scopes listed in section 3. No access is obtained
+  by any other means: no password is ever collected or stored, no credential is scraped, and no access is
+  delegated domain-wide. The operator may withdraw consent at any time, which ends access immediately.
+</p>
+<h3>Use</h3>
+<p>
+  Google user data is used only to deliver the functions described in section 2 and nothing else: to write
+  encrypted backup archives to Drive, and to read or draft the operator's own mail, events, contacts,
+  documents, spreadsheets and tasks when the operator asks. Data is never used for advertising or
+  marketing, never used to build marketing profiles, never used to determine creditworthiness, and never
+  used to train or fine-tune any machine-learning or AI model — not by us and not by any model provider.
+  No human other than the account holder reads the data.
+</p>
+<h3>Storage</h3>
+<p>
+  The only Google user data retained is the encrypted backup archive in the operator's own private Drive
+  folder, kept on the rolling schedule in section 5 (7 daily and 4 weekly copies). Content read during a
+  single request (a mail, an event, a document) is held in memory only for the duration of that request
+  and is not written to disk or to any log. Credentials (the OAuth refresh token and client secret) are
+  stored on the operator's own machine with filesystem permissions that allow no other user to read them.
+  No Google user data is stored on any server operated by anyone else.
+</p>
+<h3>Sharing</h3>
+<p>
+  Google user data is not shared, sold, rented, licensed, published or otherwise disclosed to any third
+  party. There is no advertising partner, no analytics provider, no data broker and no subprocesssor. The
+  only exceptions would be compliance with a valid legal obligation, or disclosure to Google itself as the
+  storage provider the operator chose. Neither exception has ever occurred.
+</p>
+<h3>Limited Use commitment</h3>
+<p>
+  We further certify, consistent with the Google API Services User Data Policy and its Limited Use
+  requirements, that Google user data is used only to provide or improve the user-facing features
+  described here; is not transferred except as described here, as necessary for security or legal
+  compliance, or with the account holder's explicit agreement; and is not used to train any model or for
+  any advertising purpose, including targeted advertising.
+</p>
 
 <h2>1. Who we are</h2>
 <p>
